@@ -1,4 +1,5 @@
-📑 Índice
+#Índice
+
 Front-end
 Instalação e Configuração das Bibliotecas Front-End
 Limpar estrutura do Template
@@ -18,7 +19,8 @@ Component: App
 Front-end
 Vamos criar uma pasta 'web' que vai conter nossa aplicação.
 
-📚 Instalação e Configuração das Bibliotecas Front-End
+#Instalação e Configuração das Bibliotecas Front-End
+
 Instalar o Template de aplicação de react em Typescript: yarn create react-app web --template typescript
 
 Instalar o React-Router-DOM:yarn add react-router-dom
@@ -32,7 +34,8 @@ Então, vamos criar uma pasta 'assets' e uma subpasta 'images'. Nela deixaremos 
 Limpar estrutura do Template
 Vamos fazer algumas alterações em arquivos do template que não vamos utilizar, ou que vamos recriar depois.
 
-Excluir Todos os arquivos .css
+#Excluir Todos os arquivos .css
+
 Na pasta 'public' deixar apenas o index.html
 Excluir o Readme.md
 Excluir o App.test.tsx
@@ -45,28 +48,30 @@ A construção do layout da nossa aplicação seguirá o conceito de Mobile Firs
 
 Dentro da pasta 'assets' vamos criar uma subpasta 'styles' e dentro dela um arquivo 'global.css'. Nesse arquivo teremos estilizações globais que servirão para todo o projeto. Vamos usar unidades de medidas do css que são adaptáveis a diferentes telas, para termos um layout responsivo (ex: rem, vh e vw). Para acessar o estilo completo, clicar aqui. Abaixo, vamos comentar alguns pontos importantes:
 
-Com o border-box, o width e height incluem o tamanho padding size e a propriedade border, mas não incluem a propriedade margin:
+#Com o border-box, o width e height incluem o tamanho padding size e a propriedade border, mas não incluem a propriedade margin:
 
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
-Nas nossas divs html, body e root vamos setar a altura de 100vh para que a página ocupe a altura total da tela:
+#Nas nossas divs html, body e root vamos setar a altura de 100vh para que a página ocupe a altura total da tela:
 
 html,
 body,
 #root {
   height: 100vh;
 }
-Na div #root, vamos usar o flex-box com o display: flex. Ele transforma em flex container e todos os seus filhos diretos em flex itens. Com o align-items: center, todo o conteúdo fica alinhado horizontalmente e com o justify-content: center todo conteúdo fica justificado ao centro da tela:
+
+#Na div #root, vamos usar o flex-box com o display: flex. Ele transforma em flex container e todos os seus filhos diretos em flex itens. Com o align-items: center, todo o conteúdo fica alinhado horizontalmente e com o justify-content: center todo conteúdo fica justificado ao centro da tela:
 
 #root {
   display: flex;
   align-items: center;
   justify-content: center;
 }
-Vamos setar as fontes para que aumente em 60% o tamanho da fonte principal, para isso vamos colocar 1.6rem:
+
+#Vamos setar as fontes para que aumente em 60% o tamanho da fonte principal, para isso vamos colocar 1.6rem:
 
 body,
 input,
@@ -74,14 +79,17 @@ button,
 textarea {
   font: 500 1.6rem Poppins;
 }
-Nosso container vai ocupar 90% da tela com máximo de até 700px:
+
+#Nosso container vai ocupar 90% da tela com máximo de até 700px:
 
 .container {
   width: 90vw;
   max-width: 700px;
 }
-Components
-Vamos criar 2 components que vão se repetir em várias páginas da aplicação: PageHeader e TeacherItem.
+
+##Components
+
+#Vamos criar 2 components que vão se repetir em várias páginas da aplicação: PageHeader e TeacherItem.
 
 Component: Page Header
 Tirando a Home, as duas outros páginas da aplicação temos um header que contém título e logo. Podemos então criar esse header em forma de component para reutilizarmos nessas páginas. Vamos criar uma pasta 'components' e uma subpasta 'PageHeader' com um arquivo 'index.tsx'. Essa página também terá um 'styles.css' próprio que pode ser encontrado aqui.
@@ -98,9 +106,10 @@ interface PageHeaderProps {
   title: string;
   description?: string; // não obrigatória
 }
-Para informar que o componente terá essa interface usamos o React Functional Component (React.FC) passando a inferface como parâmetro. Agora no lugar do título escrevemos a variável props.title que trará o título que conterá lá na página acessada. A propriedade props.children é uma padrão do React e rederiza tudo que tiver sido escrito dentro do componente, onde ele for aplicado.
 
-Além disso, vamo incluir outra propriedade que não é obrigatória conter em todos os Headers, a description. Com o AND (&&) do js, a segunda parte só vai ser executada se a primeira for verdadeira. Assim, geramos um if existir props.description, exiba o props.description.
+#Para informar que o componente terá essa interface usamos o React Functional Component (React.FC) passando a inferface como parâmetro. Agora no lugar do título escrevemos a variável props.title que trará o título que conterá lá na página acessada. A propriedade props.children é uma padrão do React e rederiza tudo que tiver sido escrito dentro do componente, onde ele for aplicado.
+
+#Além disso, vamo incluir outra propriedade que não é obrigatória conter em todos os Headers, a description. Com o AND (&&) do js, a segunda parte só vai ser executada se a primeira for verdadeira. Assim, geramos um if existir props.description, exiba o props.description.
 
 const PageHeader: React.FC<PageHeaderProps> = (props) => {
   return (
@@ -190,13 +199,15 @@ Tanto na página de listagem quanto na página de formulário, temos inputs de t
 
 import React, { InputHTMLAttributes } from 'react';
 import './styles.css';
-Vamos extender a interface criada para o Input com uma interface já pronta do React, a 'InputHTMLAttributes' que permite que meu input tenha todas as propriedades padrão possíveis do HTML.
+
+#Vamos extender a interface criada para o Input com uma interface já pronta do React, a 'InputHTMLAttributes' que permite que meu input tenha todas as propriedades padrão possíveis do HTML.
 
 interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
   label: string;
   name: string;
 }
-Agora, por meio do 'spread operator' do js, armazeno na variável 'rest' todas as propriedades HTML para input e depois coloco lá no meu input.
+
+#Agora, por meio do 'spread operator' do js, armazeno na variável 'rest' todas as propriedades HTML para input e depois coloco lá no meu input.
 
 const Input: React.FC<InputProps> = ({ label, name, ...rest }) => {
   return (
@@ -265,11 +276,14 @@ const Textarea: React.FC<TextareaProps> = ({ label, name, ...rest }) => {
 };
 
 export default Textarea;
-Páginas
-Nossa aplicação tem 3 páginas: Home, Listagem de Professores e Formulário. Todas as páginas serão feitas em formato de component, e navegaremos entre elas pelas rotas.
 
-Página: Landing Page
-Na pasta 'scr' criar uma pasta 'pages' e uma subpasta 'Landing' com um arquivo 'index.tsx', para criar nossa primeira página como componente "Landing" que conterá o conteúdo principal da nossa Homepage. O componente do React é uma função (com letra maiúscula) que retorna um html. Vamos começar importando o React e depois o component 'Link' padrão do React. O Link vai fazer nosso component carregar na página quando ele for chamado pela rota.
+##Páginas
+
+#Nossa aplicação tem 3 páginas: Home, Listagem de Professores e Formulário. Todas as páginas serão feitas em formato de component, e navegaremos entre elas pelas rotas.
+
+##Página: Landing Page
+
+#Na pasta 'scr' criar uma pasta 'pages' e uma subpasta 'Landing' com um arquivo 'index.tsx', para criar nossa primeira página como componente "Landing" que conterá o conteúdo principal da nossa Homepage. O componente do React é uma função (com letra maiúscula) que retorna um html. Vamos começar importando o React e depois o component 'Link' padrão do React. O Link vai fazer nosso component carregar na página quando ele for chamado pela rota.
 
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
@@ -408,8 +422,10 @@ Agora para cada estilo de elemento, eu informo a qual variável ele corresponde,
         justify-self: end;
     }
   }
-Página: Teacher List
-Vamos criar agora a página de listagem de professores. Dentro da pasta 'pages', criar uma subpasta 'TeacherList' e um arquivo 'index.tsx'. Fazemos a importação do React e também dos nossos componentes que criamos o PageHeader e o TeacherItem. No PageHeader vamos escrever nosso título como propriedade e dentro dele criaremos o formulário de filtro que será específico dessa página. Dentro do
+
+##Página: Teacher List
+
+#Vamos criar agora a página de listagem de professores. Dentro da pasta 'pages', criar uma subpasta 'TeacherList' e um arquivo 'index.tsx'. Fazemos a importação do React e também dos nossos componentes que criamos o PageHeader e o TeacherItem. No PageHeader vamos escrever nosso título como propriedade e dentro dele criaremos o formulário de filtro que será específico dessa página. Dentro do
 
 colocamos o component TeacherItem como lista. Essa página também terá um 'styles.css' próprio que pode ser encontrado aqui.
 import React, { useState, FormEvent } from 'react';
@@ -552,6 +568,7 @@ return (
   </div>
 );
 }
+
 Página: Teacher Form
 Vamos criar agora a página para cadastro de professores. Dentro da pasta 'pages', criar uma subpasta 'TeacherForm' e um arquivo 'index.tsx'. Essa página também terá um 'styles.css' próprio que pode ser encontrado aqui.
 
@@ -746,6 +763,7 @@ export default function TeacherForm() {
     </div>
   );
 }
+
 React Router DOM
 Precisamos criar um sistema de navegação entre as páginas. No HTML utilizamos os endereços das páginas, mas no React precisamos utilizar o sistema de Rotas. Para isso vamos usar o React-Router-DOM que vai criar o sistema que navega entre os componentes como se fossem páginas baseados nas rotas que o usuário está acessando.
 
@@ -791,5 +809,3 @@ const api = axios.create({
 });
 
 export default api;
-📕 Licença
-Todos os arquivos incluídos aqui, incluindo este _ README _, estão sob Licença MIT. Criado por Antônio Júnior
