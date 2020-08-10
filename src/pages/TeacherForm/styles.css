@@ -12,7 +12,7 @@
   width: 100%;
   max-width: 74rem;
   border-radius: 0.8rem;
-  margin: -3.2rem auto 3.2rem;
+  margin: -3.2rem auto 3.2rem auto;
   padding-top: 6.4rem;
   overflow: hidden;
 }
@@ -52,7 +52,7 @@
 }
 
 #page-teacher-form main fieldset .input-block + .textarea-block,
-#page-teacher-form main fieldset .select-block + .textarea-block {
+#page-teacher-form main fieldset .select-block + .input-block {
   margin-top: 2.4rem;
 }
 
@@ -94,10 +94,11 @@
   justify-content: center;
   text-decoration: none;
   transition: background-color 0.2s;
+  margin-top: 3.2rem;
 }
 
 #page-teacher-form main footer button:hover {
-  background: var(--color-secundary-dark);
+  background-color: var(--color-secundary-dark);
 }
 
 @media (min-width: 700px) {
@@ -120,11 +121,11 @@
   }
 
   #page-teacher-form main .schedule-item .input-block {
-    margin-top: 0;
+    margin-top: 0 !important;
   }
 
   #page-teacher-form main footer {
-    padding: 4.0rem 6.4rem;
+    padding: 4rem 6.4rem;
     display: flex;
     align-items: center;
     justify-content: space-between;
